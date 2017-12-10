@@ -1,12 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StatusBar } from 'react-native'
 import TopSpacer from './components/TopSpacer'
 import MainView from './components/MainView'
 
 const App = function() {
   return (
     <View>
-      <TopSpacer />
+      <StatusBar backgroundColor="black"/>
       <MainView />
     </View>
   )

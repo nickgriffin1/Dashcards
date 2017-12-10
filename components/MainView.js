@@ -1,22 +1,23 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { } from 'react-navigation'
 import styled from 'styled-components/native'
 import ListView from './ListView'
 import NotFoundView from './NotFoundView'
 
 const MainContainer = styled.View`
+  width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #333;
 `
 
 const MainView = function() {
   return (
-    <MainContainer>
-      <Text>Main view is here</Text>
-    </MainContainer>
+    <ScrollView>
+      <MainContainer>
+        <ListView />
+      </MainContainer>
+    </ScrollView>
   )
 }
 
