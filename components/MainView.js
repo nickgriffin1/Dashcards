@@ -13,8 +13,12 @@ const MainContainer = styled.View`
 
 const MainView = function() {
   return (
-    <ScrollView>
-      <MainContainer>
+    <ScrollView
+      style={{backgroundColor: '#333'}}
+      contentContainerStyle={{backgroundColor: '#333'}}
+      contentOffset={{y: 1000}}
+    >
+      <MainContainer style={{height: 1000}} >
         <ListView />
       </MainContainer>
     </ScrollView>
