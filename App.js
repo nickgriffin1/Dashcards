@@ -15,24 +15,45 @@ const Stack = StackNavigator({
     path: '/',
     navigationOptions: {
       title: 'DashCards',
-      headerRight: AddViewIcon
+      headerStyle: { backgroundColor: 'transparent' },
+      headerTitleStyle: { color: 'white' }
     }
   },
   AddDeck: {
     screen: AddDeckView,
-    path: 'add/deck'
+    path: 'add/deck',
+    navigationOptions: {
+      title: 'Add Deck',
+      headerStyle: { backgroundColor: 'transparent' },
+      headerTitleStyle: { color: 'white' }
+    }
   },
   AddQuestions: {
     screen: AddQuestionsView,
-    path: 'add/question/:id'
+    path: 'add/question/:id',
+    navigationOptions: {
+      title: 'Add Question',
+      headerStyle: { backgroundColor: 'transparent' },
+      headerTitleStyle: { color: 'white' }
+    }
   },
   Detail: {
     screen: DetailView,
-    path: 'detail/:id'
+    path: 'details/:id',
+    navigationOptions: {
+      title: 'DashCard Details',
+      headerStyle: { backgroundColor: 'transparent' },
+      headerTitleStyle: { color: 'white' }
+    }
   },
   Quiz: {
     screen: QuizView,
-    path: 'quiz/:id'
+    path: 'quiz/:id',
+    navigationOptions: {
+      title: 'Dashcard Quiz',
+      headerStyle: { backgroundColor: 'transparent' },
+      headerTitleStyle: { color: 'white' }
+    }
   }
 })
 

@@ -5,14 +5,14 @@ import { Ionicons } from '@expo/vector-icons'
 
 const PlusIcon = styled.TouchableOpacity`
   position: absolute;
-  right: 0;
-  margin-right: 20px;
-  margin-top: 50px;
+  left: 0;
+  margin-left: 20px;
+  margin-top: 630px;
   z-index: 100;
   background-color: transparent;
 `
 
-const AddViewIcon = () => (
+const AddViewIcon = ({ navigation }) => (
   <PlusIcon>
     <Ionicons
       name='ios-add-circle-outline'

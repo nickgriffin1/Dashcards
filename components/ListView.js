@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
 import Deck from './Deck'
+import AddViewIcon from './AddViewIcon'
 
 const ListViewContainer = styled.View`
   height: 1000;
@@ -25,22 +26,22 @@ const HeaderText = styled.Text`
   margin-top: 50px;
 `
 
-class ListView extends React.Component {
-  state = {
-    items: [0, 0, 0, 0, 0, 0, 0, 0],
-  }
-  render() {
-    const { items } = this.state
-    return (
-      <ListViewContainer>
-        <ScrollView>
-          {items.map((item, index) => (
-            <Deck key={index} title={item} desciption={item} />
-          ))}
-        </ScrollView>
-      </ListViewContainer>
-    )
-  }
+function ListView({ navigation }) {
+  return (
+    <ListViewContainer>
+      <ScrollView>
+        {[0, 0, 0, 0, 0, 0, 0, 0].map((item, index) => (
+          <Deck
+            key={index}
+            title={item}
+            desciption={item}
+            navigation={navigation}
+          />
+        ))}
+      </ScrollView>
+      <AddViewIcon navigation={navigation} />
+    </ListViewContainer>
+  )
 }
 
 export default ListView

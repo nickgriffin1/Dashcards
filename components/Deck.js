@@ -48,18 +48,16 @@ const DeckButtonText = styled.Text`
   color: #18ffff;
 `
 
-class Deck extends React.Component {
-  render() {
-    return (
-      <DeckItemContainer>
-        <DeckItemHeader>Deck Example</DeckItemHeader>
-        <DeckItemDescription>3 cards</DeckItemDescription>
-        <DeckButton onPress={() => navigation.navigate('Detail')}>
-          <DeckButtonText>VIEW</DeckButtonText>
-        </DeckButton>
-      </DeckItemContainer>
-    )
-  }
+function Deck({ navigation }) {
+  return (
+    <DeckItemContainer>
+      <DeckItemHeader>Deck Example</DeckItemHeader>
+      <DeckItemDescription>3 cards</DeckItemDescription>
+      <DeckButton onPress={() => navigation.navigate('Detail')}>
+        <DeckButtonText>VIEW</DeckButtonText>
+      </DeckButton>
+    </DeckItemContainer>
+  )
 }
 
 export default Deck
