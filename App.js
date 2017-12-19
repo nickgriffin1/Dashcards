@@ -1,58 +1,66 @@
 import React from 'react'
 import { Text, View, StatusBar } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import TopSpacer from './components/TopSpacer'
 import ListView from './components/ListView'
 import AddDeckView from './components/AddDeckView'
-import AddQuestionsView from './components/AddQuestionsView'
+import AddQuestionView from './components/AddQuestionView'
+import AddCardView from './components/AddCardView'
 import DetailView from './components/DetailView'
 import QuizView from './components/QuizView'
 import AddViewIcon from './components/AddViewIcon'
+
+const defaultStyle = {
+  headerStyle: { backgroundColor: 'transparent' },
+  headerTitleStyle: { color: 'white' }
+}
 
 const Stack = StackNavigator({
   Home: {
     screen: ListView,
     path: '/',
     navigationOptions: {
-      title: 'DashCards',
-      headerStyle: { backgroundColor: 'transparent' },
-      headerTitleStyle: { color: 'white' }
+      title: 'DashCards 💨',
+      ...defaultStyle
     }
   },
   AddDeck: {
     screen: AddDeckView,
     path: 'add/deck',
     navigationOptions: {
-      title: 'Add Deck',
-      headerStyle: { backgroundColor: 'transparent' },
-      headerTitleStyle: { color: 'white' }
+      title: 'New Deck',
+      ...defaultStyle
     }
   },
-  AddQuestions: {
-    screen: AddQuestionsView,
+  AddQuestion: {
+    screen: AddQuestionView,
     path: 'add/question/:id',
     navigationOptions: {
       title: 'Add Question',
-      headerStyle: { backgroundColor: 'transparent' },
-      headerTitleStyle: { color: 'white' }
+      ...defaultStyle
+    }
+  },
+  AddCard: {
+    screen: AddCardView,
+    path: 'add/card/:id',
+    navigationOptions: {
+      title: 'Add Card',
+      ...defaultStyle
     }
   },
   Detail: {
     screen: DetailView,
     path: 'details/:id',
     navigationOptions: {
-      title: 'DashCard Details',
-      headerStyle: { backgroundColor: 'transparent' },
-      headerTitleStyle: { color: 'white' }
+      title: 'DashCards Details',
+      ...defaultStyle
     }
   },
   Quiz: {
     screen: QuizView,
     path: 'quiz/:id',
     navigationOptions: {
-      title: 'Dashcard Quiz',
-      headerStyle: { backgroundColor: 'transparent' },
-      headerTitleStyle: { color: 'white' }
+      title: 'Dashcards Quiz',
+      ...defaultStyle
     }
   }
 })
@@ -60,7 +68,7 @@ const Stack = StackNavigator({
 const App = function() {
   return (
     <View style={{flex: 1}}>
-      <StatusBar backgroundColor='#333' barStyle='light-content'/>
+      <StatusBar barStyle='light-content'/>
       <Stack />
     </View>
   )

@@ -10,7 +10,6 @@ const ListViewContainer = styled.View`
   width: 100%;
   background-color: black;
 `
-
 const ListViewHeader = styled.View`
   height: 110px;
   z-index: 1000;
@@ -18,14 +17,12 @@ const ListViewHeader = styled.View`
   border-bottom-width: 1px;
   margin-top: 50px;
 `
-
 const HeaderText = styled.Text`
   font-size: 36px;
   color: white;
   text-align: center;
   margin-top: 50px;
 `
-
 function ListView({ navigation }) {
   return (
     <ListViewContainer>

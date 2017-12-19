@@ -27,28 +27,32 @@ const DetailButton = styled.TouchableOpacity`
   width: 80%;
   height: 50px;
   margin-top: 20px;
-  border: 1px solid yellow;
+  border: 1px solid;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   border-radius: 3px;
 `
 const DetailButtonText = styled.Text`
   color: white;
   font-size: 24px;
 `
-
 const DetailView = function({ name, navigation }) {
   return (
     <DetailContainer>
       <DetailSubContainer>
-        <DetailHeader>Name Goes Here</DetailHeader>
-        <DetailButton>
-          <DetailButtonText onPress={() => navigation.navigate('AddQuestions')}>Add Card</DetailButtonText>
+        <DetailHeader>Name Goes Here { name }</DetailHeader>
+        <DetailButton style={{borderColor: '#F3F315'}}>
+          <DetailButtonText
+            onPress={() => navigation.navigate('AddCard')}
+            style={{color: '#F3F315'}}
+          >Add Card</DetailButtonText>
         </DetailButton>
-        <DetailButton>
-          <DetailButtonText onPress={() => navigation.navigate('Quiz')}>Start Quiz</DetailButtonText>
+        <DetailButton style={{borderColor: '#39ff14'}}>
+          <DetailButtonText
+            onPress={() => navigation.navigate('Quiz')}
+            style={{color: '#39ff14'}}
+          >Start Quiz</DetailButtonText>
         </DetailButton>
       </DetailSubContainer>
     </DetailContainer>

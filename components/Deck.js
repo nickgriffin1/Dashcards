@@ -12,19 +12,16 @@ const DeckItemContainer = styled.View`
   border-radius: 5px;
   background-color: #333;
 `
-
 const DeckItemHeader = styled.Text`
   font-size: 24px;
   color: white;
   margin-right: 60px;
 `
-
 const DeckItemDescription = styled.Text`
   font-size: 16px;
   color: white;
   margin-right: 60px;
 `
-
 const DeckButton = styled.TouchableOpacity`
   background-color: transparent;
   right: 0;
@@ -41,13 +38,11 @@ const DeckButton = styled.TouchableOpacity`
   padding-bottom: 10px;
   border-color: #18ffff;
 `
-
 const DeckButtonText = styled.Text`
   text-align: center;
   color: white;
   color: #18ffff;
 `
-
 function Deck({ navigation }) {
   return (
     <DeckItemContainer>

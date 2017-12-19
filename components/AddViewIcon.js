@@ -11,7 +11,6 @@ const PlusIcon = styled.TouchableOpacity`
   z-index: 100;
   background-color: transparent;
 `
-
 const AddViewIcon = ({ navigation }) => (
   <PlusIcon>
     <Ionicons

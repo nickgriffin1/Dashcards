@@ -7,7 +7,6 @@ const QuizContainer = styled.View`
   width: 100%;
   background-color: black;
 `
-
 const QuizView = function() {
   return (
     <QuizContainer>
