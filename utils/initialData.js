@@ -1,4 +1,4 @@
-export default const data = {
+export default const intialData = {
   React: {
     title: 'React',
     questions: [
