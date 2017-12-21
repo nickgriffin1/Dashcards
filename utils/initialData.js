@@ -1,4 +1,6 @@
-export default const intialData = {
+import { AsyncStorage } from 'react-native'
+
+const initialData = {
   React: {
     title: 'React',
     questions: [
@@ -21,4 +23,14 @@ export default const intialData = {
       }
     ]
   }
+}
+
+export function setIntialData() {
+  Object.keys(initialData).map(key => {
+    try {
+      AsyncStorage.setItem(key, JSON.stringify(initialData[key]))
+    } catch (errror) {
+      console.log('Error in setting initial data', error)
+    }
+  })
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native'
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
 import Deck from './Deck'
@@ -23,22 +23,43 @@ const HeaderText = styled.Text`
   text-align: center;
   margin-top: 50px;
 `
-function ListView({ navigation }) {
-  return (
-    <ListViewContainer>
-      <ScrollView>
-        {[0, 0, 0, 0, 0, 0, 0, 0].map((item, index) => (
-          <Deck
-            key={index}
-            title={item}
-            desciption={item}
-            navigation={navigation}
-          />
-        ))}
-      </ScrollView>
-      <AddViewIcon navigation={navigation} />
-    </ListViewContainer>
-  )
+class ListView extends React.Component {
+  state = {
+    decks: []
+  }
+  componentDidMount() {
+    AsyncStorage.getAllKeys()
+      .then(keys => {
+        keys.map(key => {
+          AsyncStorage.getItem(key).then(deck => {
+            const data = JSON.parse(deck)
+            this.setState(prevState => ({
+              decks: [
+                ...prevState.decks,
+                data
+              ]
+            }))
+          })
+        })
+      })
+  }
+  render() {
+    return (
+      <ListViewContainer>
+        <ScrollView>
+          {this.state.decks.length > 0 && this.state.decks.map(item => (
+            <Deck
+              key={item.title}
+              title={item.title}
+              numCards={item.questions.length || 0}
+              navigation={this.props.navigation}
+            />
+          ))}
+        </ScrollView>
+        <AddViewIcon navigation={this.props.navigation} />
+      </ListViewContainer>
+    )
+  }
 }
 
 export default ListView

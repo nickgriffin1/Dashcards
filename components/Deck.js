@@ -43,12 +43,13 @@ const DeckButtonText = styled.Text`
   color: white;
   color: #18ffff;
 `
-function Deck({ navigation }) {
+function Deck(props) {
+  console.log('props', props)
   return (
     <DeckItemContainer>
-      <DeckItemHeader>Deck Example</DeckItemHeader>
-      <DeckItemDescription>3 cards</DeckItemDescription>
-      <DeckButton onPress={() => navigation.navigate('Detail')}>
+      <DeckItemHeader>{ props.title }</DeckItemHeader>
+      <DeckItemDescription>{ props.numCards } cards</DeckItemDescription>
+      <DeckButton onPress={() => props.navigation.navigate('Detail')}>
         <DeckButtonText>VIEW</DeckButtonText>
       </DeckButton>
     </DeckItemContainer>

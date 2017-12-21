@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, StatusBar } from 'react-native'
 import { StackNavigator } from 'react-navigation'
+import { setIntialData } from './utils/initialData'
 import ListView from './components/ListView'
 import AddDeckView from './components/AddDeckView'
 import AddQuestionView from './components/AddQuestionView'
@@ -65,13 +66,18 @@ const Stack = StackNavigator({
   }
 })
 
-const App = function() {
-  return (
-    <View style={{flex: 1}}>
-      <StatusBar barStyle='light-content'/>
-      <Stack />
-    </View>
-  )
+class App extends React.Component {
+  componentDidMount() {
+    setIntialData()
+  }
+  render() {
+    return (
+      <View style={{flex: 1}}>
+        <StatusBar barStyle='light-content'/>
+        <Stack />
+      </View>
+    )
+  }
 }
 
 export default App
