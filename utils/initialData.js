@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const initialData = {
+export const initialData = {
   React: {
     title: 'React',
     questions: [

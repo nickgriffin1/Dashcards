@@ -1,7 +1,9 @@
 import React from 'react'
 import { Text, View, StatusBar } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import { setIntialData } from './utils/initialData'
+import { Provider } from 'react-redux'
+import { setIntialData, initialData } from './utils/initialData'
+import configureStore from './store/configureStore'
 import ListView from './components/ListView'
 import AddDeckView from './components/AddDeckView'
 import AddQuestionView from './components/AddQuestionView'
@@ -71,11 +73,14 @@ class App extends React.Component {
     setIntialData()
   }
   render() {
+    const store = configureStore(initialData)
     return (
-      <View style={{flex: 1}}>
-        <StatusBar barStyle='light-content'/>
-        <Stack />
-      </View>
+      <Provider store={store}>
+        <View style={{flex: 1}}>
+          <StatusBar barStyle='light-content'/>
+          <Stack />
+        </View>
+      </Provider>
     )
   }
 }
