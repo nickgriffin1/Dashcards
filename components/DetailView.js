@@ -13,7 +13,6 @@ const DetailContainer = styled.View`
 const DetailSubContainer = styled.View`
   height: 300px;
   width: 300px;
-  background-color: #333;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -37,20 +36,21 @@ const DetailButtonText = styled.Text`
   color: white;
   font-size: 24px;
 `
-const DetailView = function({ name, navigation }) {
+const DetailView = function({ navigation }) {
+  const { title } = navigation.state.params
   return (
     <DetailContainer>
       <DetailSubContainer>
-        <DetailHeader>Name Goes Here { name }</DetailHeader>
+        <DetailHeader>{ title }</DetailHeader>
         <DetailButton style={{borderColor: '#F3F315'}}>
           <DetailButtonText
-            onPress={() => navigation.navigate('AddCard')}
+            onPress={() => navigation.navigate('AddCard', { title })}
             style={{color: '#F3F315'}}
           >Add Card</DetailButtonText>
         </DetailButton>
         <DetailButton style={{borderColor: '#39ff14'}}>
           <DetailButtonText
-            onPress={() => navigation.navigate('Quiz')}
+            onPress={() => navigation.navigate('Quiz', { title })}
             style={{color: '#39ff14'}}
           >Start Quiz</DetailButtonText>
         </DetailButton>

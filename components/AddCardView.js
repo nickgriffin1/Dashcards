@@ -12,7 +12,6 @@ const AddCardContainer = styled.View`
 const SubContainer = styled.View`
   height: 80%;
   width: 90%;
-  background-color: #333;
   border-radius: 20px;
   justify-content: center;
   align-items: center;
@@ -28,23 +27,15 @@ const Input = styled.TextInput`
   background-color: white;
   border-radius: 5px;
 `
-const Hr = styled.View`
-  width: 80%;
-  height: 1px;
-  background-color: white;
-  margin-top: 30px;
-  margin-bottom: 30px;
-`
-const AddCardView = function() {
+const AddCardView = function({ navigation }) {
+  const { title } = navigation.state.params
   return (
     <AddCardContainer>
       <SubContainer>
-        <Title>New Card</Title>
-        <Hr />
-        <Title>Front</Title>
+        <Title>{ title }</Title>
+        <Title>Question</Title>
         <Input maxLength={100} />
-        <Hr />
-        <Title>Back</Title>
+        <Title>Answer</Title>
         <Input maxLength={1000} />
       </SubContainer>
     </AddCardContainer>

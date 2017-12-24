@@ -1,5 +1,3 @@
-// Currently not used, left for reference
-
 import React from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import styled from 'styled-components/native'
@@ -15,7 +13,6 @@ const AddContainer = styled.View`
 const SubContainer = styled.View`
   height: 50%;
   width: 90%;
-  background-color: #333;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
@@ -50,22 +47,32 @@ const ButtonText = styled.Text`
   color: white
 `
 
-const AddDeckView = function({ navigation }) {
-  submitTitle = () => {
-    navigation.navigate('AddCard')
+class AddDeckView extends React.Component {
+  state = {
+    title: ''
   }
-  return (
-    <AddContainer>
-      <SubContainer>
-        <Title>Title</Title>
-        <SubTitle>Max length 50 characters</SubTitle>
-        <Input maxLength={50} />
-        <SubmitButton onPress={() => submitTitle()}>
-          <ButtonText>Add</ButtonText>
-        </SubmitButton>
-      </SubContainer>
-    </AddContainer>
-  )
+  submitTitle = () => {
+    this.props.navigation.navigate('AddCard', { topic: this.state.title })
+  }
+  render() {
+    return (
+      <AddContainer>
+        <SubContainer>
+          <Title>Title</Title>
+          <SubTitle>Max length 50 characters</SubTitle>
+          <Input
+            maxLength={50}
+            ref={el => this.title = el}
+            value={this.state.title}
+            onChangeValue={() => this.setState({ title: this.title })}
+          />
+          <SubmitButton onPress={() => submitTitle()}>
+            <ButtonText>Add</ButtonText>
+          </SubmitButton>
+        </SubContainer>
+      </AddContainer>
+    )
+  }
 }
 
 export default AddDeckView

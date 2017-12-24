@@ -28,20 +28,22 @@ class ListView extends React.Component {
     decks: []
   }
   componentDidMount() {
-    AsyncStorage.getAllKeys()
-      .then(keys => {
-        keys.map(key => {
-          AsyncStorage.getItem(key).then(deck => {
-            const data = JSON.parse(deck)
-            this.setState(prevState => ({
-              decks: [
-                ...prevState.decks,
-                data
-              ]
-            }))
-          })
+    this.getDecks()
+  }
+  getDecks = () => {
+    AsyncStorage.getAllKeys().then(keys => {
+      keys.map((key, index) => {
+        AsyncStorage.getItem(key).then(deck => {
+          const data = JSON.parse(deck)
+          this.setState(prevState => ({
+            decks: [
+              ...prevState.decks.filter(deck => deck.title !== data.title),
+              data
+            ]
+          }))
         })
       })
+    })
   }
   render() {
     return (
@@ -51,7 +53,7 @@ class ListView extends React.Component {
             <Deck
               key={item.title}
               title={item.title}
-              numCards={item.questions.length || 0}
+              numCards={item.questions ? item.questions.length : 0}
               navigation={this.props.navigation}
             />
           ))}
