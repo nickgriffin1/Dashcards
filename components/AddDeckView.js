@@ -29,33 +29,34 @@ const SubTitle = styled.Text`
 `
 const Input = styled.TextInput`
   width: 80%;
-  height: 50px;
-  background-color: white;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  height: 30px;
+  background-color: black;
+  color: white;
   border-radius: 5px;
+  border: 1px solid white;
+  margin-top: 20px;
 `
 class AddDeckView extends React.Component {
   state = {
     title: ''
   }
   submitTitle = () => {
-    this.props.navigation.navigate('AddCard', { topic: this.state.title })
+    const title = this.state.title
+    this.props.navigation.navigate('AddCard', { title })
   }
   render() {
     return (
       <AddContainer>
         <SubContainer>
-          <Title>Title</Title>
-          <SubTitle>Max length 50 characters</SubTitle>
+          <Title>New Deck Title</Title>
           <Input
             maxLength={50}
-            ref={el => this.title = el}
+            onChangeText={(title) => this.setState({ title })}
             value={this.state.title}
-            onChangeValue={() => this.setState({ title: this.title })}
           />
+          <SubTitle>Max length 50 characters</SubTitle>
           <StandardButton
-            action={() => submitTitle()}
+            action={() => this.submitTitle()}
             text='Add'
             color='white'
           />
