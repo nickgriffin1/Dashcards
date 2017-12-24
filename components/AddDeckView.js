@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import styled from 'styled-components/native'
+import StandardButton from './StandardButton'
 
 const AddContainer = styled.View`
   height: 100%;
@@ -34,19 +35,6 @@ const Input = styled.TextInput`
   margin-bottom: 50px;
   border-radius: 5px;
 `
-const SubmitButton = styled.TouchableOpacity`
-  width: 40%;
-  height: 50px;
-  border: 1px solid yellow;
-  border-radius: 5px;
-  justify-content: center;
-  align-items: center;
-`
-const ButtonText = styled.Text`
-  font-size: 18px;
-  color: white
-`
-
 class AddDeckView extends React.Component {
   state = {
     title: ''
@@ -66,9 +54,11 @@ class AddDeckView extends React.Component {
             value={this.state.title}
             onChangeValue={() => this.setState({ title: this.title })}
           />
-          <SubmitButton onPress={() => submitTitle()}>
-            <ButtonText>Add</ButtonText>
-          </SubmitButton>
+          <StandardButton
+            action={() => submitTitle()}
+            text='Add'
+            color='white'
+          />
         </SubContainer>
       </AddContainer>
     )
