@@ -7,7 +7,7 @@ const AddCardContainer = styled.View`
   height: 100%;
   width: 100%;
   background-color: black;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 const SubContainer = styled.View`

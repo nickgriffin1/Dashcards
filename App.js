@@ -6,7 +6,6 @@ import { setIntialData, initialData } from './utils/initialData'
 import configureStore from './store/configureStore'
 import ListView from './components/ListView'
 import AddDeckView from './components/AddDeckView'
-import AddQuestionView from './components/AddQuestionView'
 import AddCardView from './components/AddCardView'
 import DetailView from './components/DetailView'
 import QuizView from './components/QuizView'
@@ -31,14 +30,6 @@ const Stack = StackNavigator({
     path: 'add/deck',
     navigationOptions: {
       title: 'New Deck',
-      ...defaultStyle
-    }
-  },
-  AddQuestion: {
-    screen: AddQuestionView,
-    path: 'add/question/:id',
-    navigationOptions: {
-      title: 'Add Question',
       ...defaultStyle
     }
   },

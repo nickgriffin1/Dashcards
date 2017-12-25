@@ -8,7 +8,7 @@ const DetailContainer = styled.View`
   width: 100%;
   background-color: black;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 const DetailSubContainer = styled.View`
