@@ -31,27 +31,41 @@ const Input = styled.TextInput`
   border-radius: 5px;
   border: 1px solid white;
 `
-const AddCardView = function({ navigation }) {
-  const { title } = navigation.state.params
-  handleSubmit = () => {
-    
+class AddCardView extends React.Component {
+  state = {
+    answer: '',
+    question: ''
   }
-  return (
-    <AddCardContainer>
-      <SubContainer>
-        <Title>Add a card to { title }</Title>
-        <Title>Question</Title>
-        <Input maxLength={100} />
-        <Title>Answer</Title>
-        <Input maxLength={1000} />
-        <StandardButton
-          text='Submit'
-          color='white'
-          action={() => handleSubmit()}
-        />
-      </SubContainer>
-    </AddCardContainer>
-  )
+  handleSubmit = () => {
+    // TODO
+  }
+  render() {
+    const { title } = this.props.navigation.state.params
+    return (
+      <AddCardContainer>
+        <SubContainer>
+          <Title>Add a card to { title }</Title>
+          <Title>Question</Title>
+          <Input
+            maxLength={100}
+            onChangeText={question => this.setState({ question })}
+            value={this.state.question}
+          />
+          <Title>Answer</Title>
+          <Input
+            maxLength={1000}
+            onChangeText={answer => this.setState({ answer })}
+            value={this.state.answer}
+          />
+          <StandardButton
+            text='Submit'
+            color='white'
+            action={() => this.handleSubmit()}
+          />
+        </SubContainer>
+      </AddCardContainer>
+    )
+  }
 }
 
 export default AddCardView
