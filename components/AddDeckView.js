@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import StandardButton from './StandardButton'
+import { addDeckTitle } from '../actions'
 
 const AddContainer = styled.View`
   height: 100%;
@@ -42,6 +44,7 @@ class AddDeckView extends React.Component {
   }
   submitTitle = () => {
     const title = this.state.title
+    this.props.addDeckTitle({ title })
     this.props.navigation.navigate('AddCard', { title })
   }
   render() {
@@ -66,4 +69,10 @@ class AddDeckView extends React.Component {
   }
 }
 
-export default AddDeckView
+function mapDispatchToProps(dispatch) {
+  return {
+    addDeckTitle: data => dispatch(addDeckTitle(data)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddDeckView)

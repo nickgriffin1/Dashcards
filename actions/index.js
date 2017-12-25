@@ -1,15 +1,13 @@
 import { saveDeckTitle, addCardToDeck } from '../utils/api'
-import { saveDeckTitle } from '../utils/api'
 
 export function initializeData(data) {
-  saveDeckTitle(title)
   return {
     type: 'INITIALIZE_DATA',
     data
   }
 }
 
-export function addDeckTitle(title) {
+export function addDeckTitle({ title }) {
   saveDeckTitle(title)
   return {
     type: 'ADD_DECK_TITLE',

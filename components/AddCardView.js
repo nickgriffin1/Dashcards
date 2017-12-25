@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import StandardButton from './StandardButton'
+import { addCard } from '../actions'
 
 const AddCardContainer = styled.View`
   height: 100%;
@@ -33,11 +35,15 @@ const Input = styled.TextInput`
 `
 class AddCardView extends React.Component {
   state = {
+    question: '',
     answer: '',
-    question: ''
   }
   handleSubmit = () => {
-    // TODO
+    this.props.addCard({
+      title: this.props.navigation.state.params.title,
+      question: this.state.question,
+      answer: this.state.answer
+    })
   }
   render() {
     const { title } = this.props.navigation.state.params
@@ -68,4 +74,10 @@ class AddCardView extends React.Component {
   }
 }
 
-export default AddCardView
+function mapDispatchToProps(dispatch) {
+  return {
+    addCard: data => dispatch(addCard(data)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddCardView)
