@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import StandardButton from './StandardButton'
@@ -23,18 +24,25 @@ const DetailHeader = styled.Text`
   color: white;
   font-size: 24px;
 `
-const DetailView = function({ navigation }) {
+const SubHeader = styled.Text`
+  color: white;
+  font-size: 18px;
+`
+const DetailView = function({ navigation, decks }) {
   const { title } = navigation.state.params
+  const currentDeck = decks.filter(deck => deck.title === title)[0]
   return (
     <DetailContainer>
       <DetailSubContainer>
         <DetailHeader>{ title }</DetailHeader>
+        <SubHeader>{ currentDeck.questions ? currentDeck.questions.length : 0 } cards</SubHeader>
         <StandardButton
           action={() => navigation.navigate('AddCard', { title })}
           text='Add Card'
           color='white'
         />
         <StandardButton
+          isDisabled={!currentDeck.questions || currentDeck.questions.length === 0}
           action={() => navigation.navigate('Quiz', { title })}
           text='Start Quiz'
           color='#39ff14'
@@ -44,4 +52,8 @@ const DetailView = function({ navigation }) {
   )
 }
 
-export default DetailView
+function mapStateToProps({ decks }) {
+  return { decks }
+}
+
+export default connect(mapStateToProps)(DetailView)

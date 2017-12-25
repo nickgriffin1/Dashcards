@@ -45,7 +45,7 @@ class AddDeckView extends React.Component {
   submitTitle = () => {
     const title = this.state.title
     this.props.addDeckTitle({ title })
-    this.props.navigation.navigate('AddCard', { title })
+    this.props.navigation.navigate('Detail', { title })
   }
   render() {
     return (

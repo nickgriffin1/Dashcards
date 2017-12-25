@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native'
 
 export function getDecks() {
+  console.log('Invoking utils/api: getDecks')
   const decks = []
   AsyncStorage.getAllKeys().then(keys => {
     const finalIndex = keys.length - 1
@@ -17,14 +18,20 @@ export function getDecks() {
 }
 
 export function getDeck(key) {
+  console.log('Invoking utils/api: getDeck')
   return AsyncStorage.getItem(key).then(deck => JSON.parse(deck))
 }
 
 export function saveDeckTitle(title) {
-  return AsyncStorage.mergeItem(title, JSON.stringify({ title }))
+  console.log('Invoking utils/api: saveDeckTitle')
+  return AsyncStorage.mergeItem(title, JSON.stringify({
+    title,
+    questions: []
+  }))
 }
 
 export function addCardToDeck({ title, question, answer }) {
+  console.log('Invoking utils/api: addCardToDeck')
   return AsyncStorage.mergeItem(title, JSON.stringify({
     questions: [{
       question,

@@ -16,7 +16,7 @@ const SubContainer = styled.View`
   height: 80%;
   width: 90%;
   border-radius: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 const Title = styled.Text`
@@ -39,11 +39,13 @@ class AddCardView extends React.Component {
     answer: '',
   }
   handleSubmit = () => {
+    const title = this.props.navigation.state.params.title
     this.props.addCard({
-      title: this.props.navigation.state.params.title,
+      title,
       question: this.state.question,
       answer: this.state.answer
     })
+    this.props.navigation.navigate('Detail', { title })
   }
   render() {
     const { title } = this.props.navigation.state.params

@@ -1,6 +1,7 @@
 export default function decks(state = [], action) {
     switch (action.type) {
       case 'ADD_DECK_TITLE':
+      console.log('Invoking reducer - ADD_DECK_TITLE:', action)
         return [
           ...state,
           {
@@ -9,7 +10,8 @@ export default function decks(state = [], action) {
           }
         ]
       case 'ADD_CARD':
-        let currentDeck = state.filter(deck => deck.title === action.title)
+        console.log('Invoking reducer - ADD_CARD:', action)
+        let currentDeck = state.filter(deck => deck.title === action.title)[0]
         currentDeck.questions.push({
           question: action.question,
           answer: action.answer

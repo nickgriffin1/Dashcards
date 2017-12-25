@@ -15,10 +15,14 @@ const Button = styled.TouchableOpacity`
 const ButtonText = styled.Text`
   font-size: 16px;
 `
-function StandardButton({ text, color, action }) {
+function StandardButton({ text, color, action, isDisabled }) {
   return (
-    <Button style={{ borderColor: color }} onPress={action}>
-      <ButtonText style={{ color }}>{text}</ButtonText>
+    <Button
+      style={{ borderColor: isDisabled ? 'grey' : color }}
+      onPress={action}
+      disabled={isDisabled}
+    >
+      <ButtonText style={{ color: isDisabled ? 'grey' : color }}>{text}</ButtonText>
     </Button>
   )
 }

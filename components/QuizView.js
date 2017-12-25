@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -15,4 +16,8 @@ const QuizView = function() {
   )
 }
 
-export default QuizView
+function mapStateToProps({ decks }) {
+  return { decks }
+}
+
+export default connect(mapStateToProps)(QuizView)
