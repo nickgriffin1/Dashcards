@@ -64,7 +64,7 @@ class App extends React.Component {
     setIntialData()
   }
   render() {
-    const store = configureStore(initialData)
+    const store = configureStore({ decks: initialData })
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>

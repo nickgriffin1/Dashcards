@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 
-export const initialData = {
-  React: {
+export const initialData = [
+  {
     title: 'React',
     questions: [
       {
@@ -14,7 +14,7 @@ export const initialData = {
       }
     ]
   },
-  JavaScript: {
+  {
     title: 'JavaScript',
     questions: [
       {
@@ -23,7 +23,7 @@ export const initialData = {
       }
     ]
   }
-}
+]
 
 export function setIntialData() {
   Object.keys(initialData).map(key => {

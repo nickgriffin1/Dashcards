@@ -4,7 +4,6 @@ import Reducer from '../reducers'
 
 const configureStore = (initialState) => {
   const middleware = applyMiddleware(thunk)
-
   return createStore(Reducer, initialState, middleware)
 }
 

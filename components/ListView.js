@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native'
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
@@ -24,13 +25,7 @@ const HeaderText = styled.Text`
   margin-top: 50px;
 `
 class ListView extends React.Component {
-  state = {
-    decks: []
-  }
-  componentDidMount() {
-    this.getDecks()
-  }
-  getDecks = () => {
+  /*getDecks = () => {
     AsyncStorage.getAllKeys().then(keys => {
       keys.map((key, index) => {
         AsyncStorage.getItem(key).then(deck => {
@@ -44,12 +39,12 @@ class ListView extends React.Component {
         })
       })
     })
-  }
+  }*/
   render() {
     return (
       <ListViewContainer>
         <ScrollView>
-          {this.state.decks.length > 0 && this.state.decks.map(item => (
+          {this.props.decks.length > 0 && this.props.decks.map(item => (
             <Deck
               key={item.title}
               title={item.title}
@@ -64,4 +59,8 @@ class ListView extends React.Component {
   }
 }
 
-export default ListView
+function mapStateToProps({ decks }) {
+  return { decks }
+}
+
+export default connect(mapStateToProps)(ListView)
