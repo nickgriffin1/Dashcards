@@ -41,19 +41,20 @@ class ListView extends React.Component {
     })
   }*/
   render() {
+    const { decks, navigation } = this.props
     return (
       <ListViewContainer>
         <ScrollView>
-          {this.props.decks.length > 0 && this.props.decks.map(item => (
+          {decks.length > 0 && decks.map(item => (
             <Deck
               key={item.title}
               title={item.title}
               numCards={item.questions ? item.questions.length : 0}
-              navigation={this.props.navigation}
+              navigation={navigation}
             />
           ))}
         </ScrollView>
-        <AddViewIcon navigation={this.props.navigation} />
+        <AddViewIcon navigation={navigation} />
       </ListViewContainer>
     )
   }
