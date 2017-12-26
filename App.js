@@ -10,6 +10,7 @@ import AddCardView from './components/AddCardView'
 import DetailView from './components/DetailView'
 import QuizView from './components/QuizView'
 import AddViewIcon from './components/AddViewIcon'
+import { setLocalNotification } from './utils/helpers'
 
 const defaultStyle = {
   headerStyle: { backgroundColor: 'transparent' },
@@ -61,7 +62,7 @@ const Stack = StackNavigator({
 
 class App extends React.Component {
   componentDidMount() {
-    setIntialData()
+    setLocalNotification()
   }
   render() {
     const store = configureStore({ decks: initialData })

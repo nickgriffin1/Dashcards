@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { View, Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import StandardButton from './StandardButton'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 const DetailContainer = styled.View`
   height: 100%;
@@ -31,6 +32,10 @@ const SubHeader = styled.Text`
 const DetailView = function({ navigation, decks }) {
   const { title } = navigation.state.params
   const currentDeck = decks.filter(deck => deck.title === title)[0]
+  function startQuiz() {
+    navigation.navigate('Quiz', { title })
+    clearLocalNotification().then(setLocalNotification)
+  }
   return (
     <DetailContainer>
       <DetailSubContainer>
@@ -43,7 +48,7 @@ const DetailView = function({ navigation, decks }) {
         />
         <StandardButton
           isDisabled={!currentDeck.questions || currentDeck.questions.length === 0}
-          action={() => navigation.navigate('Quiz', { title })}
+          action={() => startQuiz()}
           text='Start Quiz'
           color='#39ff14'
         />
