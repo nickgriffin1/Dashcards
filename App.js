@@ -21,7 +21,7 @@ const Stack = StackNavigator({
     screen: ListView,
     path: '/',
     navigationOptions: {
-      title: 'DashCards 💨',
+      title: 'DashCards',
       ...defaultStyle
     }
   },
@@ -45,7 +45,7 @@ const Stack = StackNavigator({
     screen: DetailView,
     path: 'details/:id',
     navigationOptions: {
-      title: 'DashCards Details',
+      title: 'Details',
       ...defaultStyle
     }
   },
@@ -53,7 +53,7 @@ const Stack = StackNavigator({
     screen: QuizView,
     path: 'quiz/:id',
     navigationOptions: {
-      title: 'Dashcards Quiz',
+      title: 'Quiz',
       ...defaultStyle
     }
   }
