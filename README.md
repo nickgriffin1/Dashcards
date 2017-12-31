@@ -8,11 +8,14 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 - React Native
 - Redux
 - React-Redux
+- Styled-Components
+- Expo
+- React Navigation
 
 #### Installation
 1. `yarn install`
 2. `yarn start`
-3. Press `i` in the terminal to open the iOS emulator or scan the QR code in the expo app
+3. Press `i` in the terminal to open the iOS emulator or scan the QR code in the expo app to open the app
 
 # License
 MIT
