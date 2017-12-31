@@ -83,12 +83,19 @@ class QuizView extends React.Component {
     const percent = this.state.correct / this.state.length
     return Math.round(percent * 100)
   }
+  restartQuiz = () => {
+    this.setState({
+      currentIndex: 0,
+      showAnswer: false,
+      correct: 0,
+      done: false
+    })
+  }
   render() {
     const { currentIndex, showAnswer, done } = this.state
     const { decks, navigation } = this.props
     const { title } = navigation.state.params
     const currentDeck = decks.filter(deck => deck.title === title)[0]
-    console.log('this.state', this.state)
     return (
       <View>
         {done ?
@@ -97,6 +104,11 @@ class QuizView extends React.Component {
             <QuizText>
               {this.getPercentCorrect()}% correct
             </QuizText>
+            <StandardButton
+              text='Restart Quiz'
+              color='#39ff14'
+              action={() => this.restartQuiz()}
+            />
           </QuizContainer> :
           <QuizContainer>
             <Counter>{currentIndex + 1}/{currentDeck.questions.length}</Counter>
