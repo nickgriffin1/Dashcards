@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <StatusBar barStyle='light-content'/>
+          <StatusBar barStyle='light-content' />
           <Stack />
         </View>
       </Provider>
