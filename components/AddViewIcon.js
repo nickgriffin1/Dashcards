@@ -7,7 +7,7 @@ const PlusIcon = styled.TouchableOpacity`
   position: absolute;
   left: 0;
   margin-left: 20px;
-  margin-top: 630px;
+  margin-top: 550px;
   z-index: 100;
   background-color: transparent;
 `
