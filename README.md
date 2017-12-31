@@ -1,6 +1,6 @@
 # Dashcards
 A flashcards iOS app written in React Native as the 3rd and final project of the Udacity React Nanodegree.
-[[https://i.imgur.com/W2eep03.png|alt=screenshot]]
+![Screenshot](https://i.imgur.com/W2eep03.png)
 
 # Info
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
