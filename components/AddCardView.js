@@ -1,9 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TextInput } from 'react-native'
-import styled from 'styled-components/native'
-import StandardButton from './StandardButton'
-import { addCard } from '../actions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components/native';
+import StandardButton from './StandardButton';
+import { addCard } from '../actions';
 
 const AddCardContainer = styled.View`
   height: 100%;
@@ -11,20 +10,23 @@ const AddCardContainer = styled.View`
   background-color: black;
   justify-content: flex-start;
   align-items: center;
-`
+`;
+
 const SubContainer = styled.View`
   height: 80%;
   width: 90%;
   border-radius: 20px;
   justify-content: flex-start;
   align-items: center;
-`
+`;
+
 const Title = styled.Text`
   font-size: 24px;
   color: white;
   margin-bottom: 20px;
   margin-top: 20px;
-`
+`;
+
 const Input = styled.TextInput`
   width: 80%;
   height: 30px;
@@ -32,23 +34,26 @@ const Input = styled.TextInput`
   color: white;
   border-radius: 5px;
   border: 1px solid white;
-`
-class AddCardView extends React.Component {
+`;
+
+class AddCardView extends Component {
   state = {
     question: '',
     answer: '',
   }
+
   handleSubmit = () => {
-    const title = this.props.navigation.state.params.title
+    const title = this.props.navigation.state.params.title;
     this.props.addCard({
       title,
       question: this.state.question,
-      answer: this.state.answer
-    })
-    this.props.navigation.navigate('Detail', { title })
+      answer: this.state.answer,
+    });
+    this.props.navigation.navigate('Detail', { title });
   }
+
   render() {
-    const { title } = this.props.navigation.state.params
+    const { title } = this.props.navigation.state.params;
     return (
       <AddCardContainer>
         <SubContainer>
@@ -66,20 +71,20 @@ class AddCardView extends React.Component {
             value={this.state.answer}
           />
           <StandardButton
-            text='Submit'
-            color='white'
+            text="Submit"
+            color="white"
             action={() => this.handleSubmit()}
           />
         </SubContainer>
       </AddCardContainer>
-    )
+    );
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     addCard: data => dispatch(addCard(data)),
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(AddCardView)
+export default connect(null, mapDispatchToProps)(AddCardView);

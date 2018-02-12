@@ -6,31 +6,31 @@ export const initialData = [
     questions: [
       {
         question: 'What is React?',
-        answer: 'A library for managing user interfaces'
+        answer: 'A library for managing user interfaces',
       },
       {
         question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
-      }
-    ]
+        answer: 'The componentDidMount lifecycle event',
+      },
+    ],
   },
   {
     title: 'JavaScript',
     questions: [
       {
         question: 'What is a closure?',
-        answer: 'The combination of a function and the lexical environment within which that function was declared.'
-      }
-    ]
-  }
-]
+        answer: 'The combination of a function and the lexical environment within which that function was declared.',
+      },
+    ],
+  },
+];
 
 export function setIntialData() {
-  Object.keys(initialData).map(key => {
+  Object.keys(initialData).forEach((key) => {
     try {
-      AsyncStorage.setItem(key, JSON.stringify(initialData[key]))
-    } catch (errror) {
-      console.log('Error in setting initial data', error)
+      AsyncStorage.setItem(key, JSON.stringify(initialData[key]));
+    } catch (error) {
+      console.log('Error in setting initial data', error);
     }
-  })
+  });
 }

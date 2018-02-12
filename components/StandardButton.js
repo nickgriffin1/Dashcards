@@ -1,6 +1,6 @@
-import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 
 const Button = styled.TouchableOpacity`
   width: 80%;
@@ -11,11 +11,18 @@ const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-`
+`;
+
 const ButtonText = styled.Text`
   font-size: 16px;
-`
-function StandardButton({ text, color, action, isDisabled }) {
+`;
+
+function StandardButton({
+  text,
+  color,
+  action,
+  isDisabled,
+}) {
   return (
     <Button
       style={{ borderColor: isDisabled ? 'grey' : color }}
@@ -24,7 +31,7 @@ function StandardButton({ text, color, action, isDisabled }) {
     >
       <ButtonText style={{ color: isDisabled ? 'grey' : color }}>{text}</ButtonText>
     </Button>
-  )
+  );
 }
 
-export default StandardButton
+export default StandardButton;

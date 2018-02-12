@@ -1,6 +1,6 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 
 const DeckItemContainer = styled.View`
   min-height: 70px;
@@ -11,17 +11,20 @@ const DeckItemContainer = styled.View`
   padding: 20px;
   border-radius: 5px;
   background-color: #333;
-`
+`;
+
 const DeckItemHeader = styled.Text`
   font-size: 24px;
   color: white;
   margin-right: 60px;
-`
+`;
+
 const DeckItemDescription = styled.Text`
   font-size: 16px;
   color: white;
   margin-right: 60px;
-`
+`;
+
 const DeckButton = styled.TouchableOpacity`
   background-color: transparent;
   right: 0;
@@ -37,22 +40,22 @@ const DeckButton = styled.TouchableOpacity`
   padding-top: 10px;
   padding-bottom: 10px;
   border-color: #18ffff;
-`
+`;
+
 const DeckButtonText = styled.Text`
   text-align: center;
   color: white;
   color: #18ffff;
-`
-function Deck({ numCards, title, navigation}) {
-  return (
-    <DeckItemContainer>
-      <DeckItemHeader>{ title }</DeckItemHeader>
-      <DeckItemDescription>{ numCards } cards</DeckItemDescription>
-      <DeckButton onPress={() => navigation.navigate('Detail', { title })}>
-        <DeckButtonText>VIEW</DeckButtonText>
-      </DeckButton>
-    </DeckItemContainer>
-  )
-}
+`;
 
-export default Deck
+const Deck = ({ numCards, title, navigation }) => (
+  <DeckItemContainer>
+    <DeckItemHeader>{ title }</DeckItemHeader>
+    <DeckItemDescription>{ numCards } cards</DeckItemDescription>
+    <DeckButton onPress={() => navigation.navigate('Detail', { title })}>
+      <DeckButtonText>VIEW</DeckButtonText>
+    </DeckButton>
+  </DeckItemContainer>
+);
+
+export default Deck;

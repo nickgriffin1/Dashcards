@@ -1,67 +1,35 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native'
-import styled from 'styled-components/native'
-import { Ionicons } from '@expo/vector-icons'
-import Deck from './Deck'
-import AddViewIcon from './AddViewIcon'
+import React from 'react';
+import { connect } from 'react-redux';
+import { ScrollView } from 'react-native';
+import styled from 'styled-components/native';
+import { Ionicons } from '@expo/vector-icons';
+import Deck from './Deck';
+import AddViewIcon from './AddViewIcon';
 
 const ListViewContainer = styled.View`
   height: 1000;
   width: 100%;
   background-color: black;
-`
-const ListViewHeader = styled.View`
-  height: 110px;
-  z-index: 1000;
-  border-bottom-color: #1de9b6;
-  border-bottom-width: 1px;
-  margin-top: 50px;
-`
-const HeaderText = styled.Text`
-  font-size: 36px;
-  color: white;
-  text-align: center;
-  margin-top: 50px;
-`
-class ListView extends React.Component {
-  /*getDecks = () => {
-    AsyncStorage.getAllKeys().then(keys => {
-      keys.map((key, index) => {
-        AsyncStorage.getItem(key).then(deck => {
-          const data = JSON.parse(deck)
-          this.setState(prevState => ({
-            decks: [
-              ...prevState.decks.filter(deck => deck.title !== data.title),
-              data
-            ]
-          }))
-        })
-      })
-    })
-  }*/
-  render() {
-    const { decks, navigation } = this.props
-    return (
-      <ListViewContainer>
-        <ScrollView>
-          {decks.length > 0 && decks.map(item => (
-            <Deck
-              key={item.title}
-              title={item.title}
-              numCards={item.questions ? item.questions.length : 0}
-              navigation={navigation}
-            />
-          ))}
-        </ScrollView>
-        <AddViewIcon navigation={navigation} />
-      </ListViewContainer>
-    )
-  }
-}
+`;
+
+const ListView = ({ decks, navigation }) => (
+  <ListViewContainer>
+    <ScrollView>
+      {decks.length > 0 && decks.map(item => (
+        <Deck
+          key={item.title}
+          title={item.title}
+          numCards={item.questions ? item.questions.length : 0}
+          navigation={navigation}
+        />
+      ))}
+    </ScrollView>
+    <AddViewIcon navigation={navigation} />
+  </ListViewContainer>
+);
 
 function mapStateToProps({ decks }) {
-  return { decks }
+  return { decks };
 }
 
-export default connect(mapStateToProps)(ListView)
+export default connect(mapStateToProps)(ListView);

@@ -1,11 +1,11 @@
-import { AsyncStorage } from 'react-native'
-import { Notifications, Permissions } from 'expo'
+import { AsyncStorage } from 'react-native';
+import { Notifications, Permissions } from 'expo';
 
-const NOTIFICATION_KEY = 'Dashcards:notifications'
+const NOTIFICATION_KEY = 'Dashcards:notifications';
 
-export function clearLocalNotification () {
+export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notifications.cancelAllScheduledNotificationsAsync)
+    .then(Notifications.cancelAllScheduledNotificationsAsync);
 }
 
 export function createNotication() {
@@ -13,43 +13,43 @@ export function createNotication() {
     title: 'Study time',
     body: 'Don\'t forget to study today!',
     ios: {
-      sound: true
+      sound: true,
     },
     android: {
       sound: true,
       priority: 'high',
       sticky: false,
-      vibrate: true
-    }
-  }
+      vibrate: true,
+    },
+  };
 }
 
 export function setLocalNotification() {
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
-    .then(data => {
+    .then((data) => {
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
             if (status === 'granted') {
-              Notifications.cancelAllScheduledNotificationsAsync()
+              Notifications.cancelAllScheduledNotificationsAsync();
 
-              let date = new Date()
-              date.setDate(data.getDate() + 1)
-              date.setHours(15)
-              date.setMinutes(45)
+              const date = new Date();
+              date.setDate(data.getDate() + 1);
+              date.setHours(15);
+              date.setMinutes(45);
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
                 {
                   time: date,
                   repeat: 'day',
-                }
-              )
+                },
+              );
 
-              AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
+              AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
             }
-          })
+          });
       }
-    })
+    });
 }

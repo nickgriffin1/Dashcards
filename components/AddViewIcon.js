@@ -1,7 +1,7 @@
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
-import { Ionicons } from '@expo/vector-icons'
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const PlusIcon = styled.TouchableOpacity`
   position: absolute;
@@ -10,16 +10,17 @@ const PlusIcon = styled.TouchableOpacity`
   margin-top: 550px;
   z-index: 100;
   background-color: transparent;
-`
+`;
+
 const AddViewIcon = ({ navigation }) => (
   <PlusIcon>
     <Ionicons
-      name='ios-add-circle-outline'
-      color='#ff1744'
+      name="ios-add-circle-outline"
+      color="#ff1744"
       size={50}
       onPress={() => navigation.navigate('AddDeck')}
     />
   </PlusIcon>
-)
+);
 
-export default AddViewIcon
+export default AddViewIcon;
